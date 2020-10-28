@@ -1,0 +1,17 @@
+nltk==3.4.4
+scipy==1.2.1
+google_auth_oauthlib==0.4.1
+pandas==0.24.2
+seaborn==0.9.0
+textstat==0.6.2
+matplotlib==3.2.1
+dill==0.3.2
+~umpy==1.16.4
+streamlit==0.69.2
+wordcloud==1.6.0
+emoji==0.6.0
+xgboost==0.90
+google_api_python_client==1.12.5
+numpy==1.19.2
+protobuf==3.13.0
+scikit_learn==0.23.2
