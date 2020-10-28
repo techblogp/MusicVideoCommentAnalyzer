@@ -59,7 +59,7 @@ if st.button(label='Submit'):
             #Display Count plot
             col1, col2 = st.beta_columns([2, 1])
             fig, ax = plt.subplots()
-#             ax=sns.countplot(x='Classification',data=data,palette="Set3")
+            ax=sns.countplot(x='Classification',data=data,palette="Set3")
             plt.ylabel("No. of comments")
             plt.title("No. of Spam and Ham comments",fontdict={'fontsize':20})
             plt.xticks([0,1],labels=['Ham','Spam']);
