@@ -1,6 +1,6 @@
 dill
-matplotlib==3.2.1
 seaborn
+matplotlib==3.2.1
 xgboost==0.90
 google_auth_oauthlib==0.4.1
 nltk==3.4.4
