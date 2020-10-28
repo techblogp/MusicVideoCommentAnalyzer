@@ -6,7 +6,7 @@ seaborn==0.9.0
 textstat==0.6.2
 matplotlib==3.2.1
 dill==0.3.2
-~umpy==1.16.4
+numpy==1.16.4
 streamlit==0.69.2
 wordcloud==1.6.0
 emoji==0.6.0
