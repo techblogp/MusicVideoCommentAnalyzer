@@ -3,7 +3,7 @@ warnings.filterwarnings("ignore")
                         
 import pandas as pd
 import streamlit as st
-import dill 
+# import dill 
 import Helper
 import YoutubeCommentExtractor
 import importlib
@@ -15,7 +15,7 @@ pd.set_option('display.max_colwidth', 200)
 # import seaborn as sns
 from matplotlib import pyplot as plt
 import string as str
-
+import joblib
 st.beta_set_page_config(layout="wide")
 
 # Title
@@ -28,8 +28,8 @@ exp.write('Enter URL of a YouTube music video and no. of comments you want to an
 st.sidebar.markdown('[Github Repository](https://github.com/Preeti24/Youtube-comments)')
 
 #Load the model
-model = dill.load(open('fittedWinnerModel', "rb"))
-# model = joblib.load(open('fittedWinnerModel', "rb"))
+# model = dill.load(open('fittedWinnerModel', "rb"))
+model = joblib.load(open('fittedWinnerModel', "rb"))
 
 col1, col2,col3 = st.beta_columns([1.8,1,1])
 
