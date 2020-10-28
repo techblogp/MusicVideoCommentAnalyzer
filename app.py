@@ -39,7 +39,7 @@ youTubeURL=col1.text_input(label='Enter YouTube music Video URL or use default',
 noOfComments=col2.number_input(label='Enter no. of comments to read or use default',value=20)
 
 #Function to scrap reviews for the given URL
-@st.cache(suppress_st_warning=True)
+# @st.cache(suppress_st_warning=True)
 def readReviews(youTubeURL,noOfComments):
     return YoutubeCommentExtractor.read_required_no_of_comments(youTubeURL,noOfComments)
 
