@@ -45,7 +45,7 @@ def readReviews(youTubeURL,noOfComments):
 
 
 if st.button(label='Submit'):
-    try:
+#     try:
         with st.spinner('Running machine learning model...'):
            
             data=readReviews(youTubeURL,noOfComments);
@@ -98,6 +98,6 @@ if st.button(label='Submit'):
             
             col4.markdown(dataHamHtml,unsafe_allow_html=True)
         
-    except:
-        st.error("An error has occured")
+#     except:
+#         st.error("An error has occured")
 
