@@ -12,7 +12,7 @@ importlib.reload(Helper)
 import time
 pd.set_option('display.max_columns', 100)
 pd.set_option('display.max_colwidth', 200)
-import seaborn as sns
+# import seaborn as sns
 from matplotlib import pyplot as plt
 import string as str
 
@@ -39,7 +39,7 @@ youTubeURL=col1.text_input(label='Enter YouTube music Video URL or use default',
 noOfComments=col2.number_input(label='Enter no. of comments to read or use default',value=20)
 
 #Function to scrap reviews for the given URL
-# @st.cache(suppress_st_warning=True)
+@st.cache(suppress_st_warning=True)
 def readReviews(youTubeURL,noOfComments):
     return YoutubeCommentExtractor.read_required_no_of_comments(youTubeURL,noOfComments)
 
@@ -59,7 +59,7 @@ if st.button(label='Submit'):
             #Display Count plot
             col1, col2 = st.beta_columns([2, 1])
             fig, ax = plt.subplots()
-            ax=sns.countplot(x='Classification',data=data,palette="Set3")
+#             ax=sns.countplot(x='Classification',data=data,palette="Set3")
             plt.ylabel("No. of comments")
             plt.title("No. of Spam and Ham comments",fontdict={'fontsize':20})
             plt.xticks([0,1],labels=['Ham','Spam']);
