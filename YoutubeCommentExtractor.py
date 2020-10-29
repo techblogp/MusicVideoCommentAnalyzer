@@ -24,10 +24,10 @@ from google.auth.transport.requests import Request
 # The CLIENT_SECRETS_FILE variable specifies the name of a file that contains
 # the OAuth 2.0 information for this application, including its client_id and
 # client_secret.
-# CLIENT_SECRETS_FILE = "client_secret"
+CLIENT_SECRETS_FILE = "client_secret"
 
 # CLIENT_SECRETS_FILE = os.environ.get('client_secret')
-CLIENT_SECRETS_FILE: ${{secrets.CLIENT_SECRET}}
+# CLIENT_SECRETS_FILE: ${{secrets.CLIENT_SECRET}}
 # github = Github(os.environ["GITHUB_TOKEN"])
 
 # This OAuth 2.0 access scope allows for full read/write access to the
