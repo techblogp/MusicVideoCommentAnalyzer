@@ -24,7 +24,7 @@ from google.auth.transport.requests import Request
 # client_secret.
 # CLIENT_SECRETS_FILE = "client_secret"
 
-CLIENT_SECRETS_FILE = ${{secret.client_secret}}
+CLIENT_SECRETS_FILE = os.environment.get('client_secret')
 
 # This OAuth 2.0 access scope allows for full read/write access to the
 # authenticated user's account and requires requests to use an SSL connection.
