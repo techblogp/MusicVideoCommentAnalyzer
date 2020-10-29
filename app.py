@@ -15,9 +15,7 @@ pd.set_option('display.max_colwidth', 200)
 import seaborn as sns
 from matplotlib import pyplot as plt
 import string as str
-
-nltk.download('wordnet')
-nltk.download('punkt')
+import nltkModules
 
 st.beta_set_page_config(layout="wide")
 
