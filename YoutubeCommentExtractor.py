@@ -18,13 +18,17 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
+# from github import Github
+
 
 # The CLIENT_SECRETS_FILE variable specifies the name of a file that contains
 # the OAuth 2.0 information for this application, including its client_id and
 # client_secret.
 # CLIENT_SECRETS_FILE = "client_secret"
 
-CLIENT_SECRETS_FILE = os.environ.get('client_secret')
+# CLIENT_SECRETS_FILE = os.environ.get('client_secret')
+CLIENT_SECRETS_FILE: ${{secrets.CLIENT_SECRET}}
+# github = Github(os.environ["GITHUB_TOKEN"])
 
 # This OAuth 2.0 access scope allows for full read/write access to the
 # authenticated user's account and requires requests to use an SSL connection.
