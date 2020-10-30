@@ -8,4 +8,4 @@ import nltk
 
 nltk.download('wordnet')
 nltk.download('punkt')
-
+spacy.load("en_core_web_sm")
