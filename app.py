@@ -21,11 +21,12 @@ import string as str
 import nltkModules
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import spacy
+import spacy spacy.load('en_core_web_sm')
 from nltk.corpus import stopwords
 # import en_core_web_sm
 # nlp = en_core_web_sm.load()
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load('en_core_web_sm')
 st.beta_set_page_config(layout="wide")
 
 # Title
