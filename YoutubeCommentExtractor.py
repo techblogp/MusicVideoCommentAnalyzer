@@ -24,7 +24,7 @@ from google.auth.transport.requests import Request
 # The CLIENT_SECRETS_FILE variable specifies the name of a file that contains
 # the OAuth 2.0 information for this application, including its client_id and
 # client_secret.
-CLIENT_SECRETS_FILE = "client_secret"
+CLIENT_SECRETS_FILE = "ABC"
 
 # CLIENT_SECRETS_FILE = os.environ.get('client_secret')
 # CLIENT_SECRETS_FILE: ${{secrets.CLIENT_SECRET}}
@@ -39,10 +39,10 @@ API_SERVICE_NAME = 'youtube'
 API_VERSION = 'v3'
 
 def get_authenticated_service():
-    credentials = None
-    if os.path.exists('token.pickle'):
-        with open('token.pickle', 'rb') as token:
-            credentials = pickle.load(token)
+#     credentials = None
+#     if os.path.exists('token.pickle'):
+#     with open('token.pickle', 'rb') as token:
+    credentials = os.environ.get('TOKEN')
     #  Check if the credentials are invalid or do not exist
     if not credentials or not credentials.valid:
         # Check if the credentials have expired
