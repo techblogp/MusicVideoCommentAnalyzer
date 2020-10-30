@@ -48,10 +48,10 @@ def get_authenticated_service():
         # Check if the credentials have expired
         if credentials and credentials.expired and credentials.refresh_token:
             credentials.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                CLIENT_SECRETS_FILE, SCOPES)
-            credentials = flow.run_console()
+#         else:
+#             flow = InstalledAppFlow.from_client_secrets_file(
+#                 CLIENT_SECRETS_FILE, SCOPES)
+#             credentials = flow.run_console()
 
         # Save the credentials for the next run
         with open('token.pickle', 'wb') as token:
