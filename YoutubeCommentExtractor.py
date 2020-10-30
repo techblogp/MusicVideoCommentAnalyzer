@@ -42,7 +42,7 @@ def get_authenticated_service():
 #     credentials = None
 #     if os.path.exists('token.pickle'):
 #     with open('token.pickle', 'rb') as token:
-    credentials = os.environ.get('TOKEN')
+    credentials = os.environ.get(${{secrets.TOKEN}})
     print('Cred:',credentials)
 #     #  Check if the credentials are invalid or do not exist
 #     if not credentials or not credentials.valid:
