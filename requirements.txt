@@ -17,3 +17,4 @@ protobuf==3.13.0
 scikit_learn==0.23.2
 vaderSentiment
 spacy
+en_core_web_sm
