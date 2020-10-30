@@ -22,6 +22,8 @@ import nltkModules
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import spacy
 from nltk.corpus import stopwords
+!py -m pip install en_core_web_sm 
+
 import en_core_web_sm
 nlp = en_core_web_sm.load()
 
