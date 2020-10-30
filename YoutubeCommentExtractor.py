@@ -24,7 +24,7 @@ from google.auth.transport.requests import Request
 # The CLIENT_SECRETS_FILE variable specifies the name of a file that contains
 # the OAuth 2.0 information for this application, including its client_id and
 # client_secret.
-CLIENT_SECRETS_FILE = "ABC.json"
+CLIENT_SECRETS_FILE = "ABC"
 
 # CLIENT_SECRETS_FILE = os.environ.get('client_secret')
 # CLIENT_SECRETS_FILE: ${{secrets.CLIENT_SECRET}}
@@ -43,19 +43,20 @@ def get_authenticated_service():
 #     if os.path.exists('token.pickle'):
 #     with open('token.pickle', 'rb') as token:
     credentials = os.environ.get('TOKEN')
-    #  Check if the credentials are invalid or do not exist
-    if not credentials or not credentials.valid:
-        # Check if the credentials have expired
-        if credentials and credentials.expired and credentials.refresh_token:
-            credentials.refresh(Request())
+    print('Cred:',credentials)
+#     #  Check if the credentials are invalid or do not exist
+#     if not credentials or not credentials.valid:
+#         # Check if the credentials have expired
+#         if credentials and credentials.expired and credentials.refresh_token:
+#             credentials.refresh(Request())
 #         else:
 #             flow = InstalledAppFlow.from_client_secrets_file(
 #                 CLIENT_SECRETS_FILE, SCOPES)
 #             credentials = flow.run_console()
 
-        # Save the credentials for the next run
-        with open('token.pickle', 'wb') as token:
-            pickle.dump(credentials, token)
+#         # Save the credentials for the next run
+#         with open('token.pickle', 'wb') as token:
+#             pickle.dump(credentials, token)
 
     return build(API_SERVICE_NAME, API_VERSION, credentials = credentials)
 
