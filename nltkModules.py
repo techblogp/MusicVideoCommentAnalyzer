@@ -8,4 +8,5 @@ import nltk
 
 nltk.download('wordnet')
 nltk.download('punkt')
+!pip install en_core_web_sm 
 
