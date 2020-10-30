@@ -29,7 +29,7 @@ nlp = en_core_web_sm.load()
 st.beta_set_page_config(layout="wide")
 
 # Title
-st.markdown("<h1 style='text-align:center; position: relative; top: -20px;'>YouTube Comment Classifier</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center; position: relative; top: -20px;'>YouTube Comment Analyzer</h1>", unsafe_allow_html=True)
 
 #Expandable sidebar
 exp=st.sidebar.beta_expander("About the project")
@@ -90,10 +90,6 @@ def nounDictionary(df):
 
     return sorted(ncDictionary.items(), key=lambda x:x[1],reverse=True)
 
-# Read css file
-with open('customStyle.txt', 'r') as myfile:
-    customStyle = myfile.read()
-        
         
 if st.button(label='Submit'):
 #     try:
