@@ -5,6 +5,7 @@
 
 
 import nltk
+import spacy
 
 nltk.download('wordnet')
 nltk.download('punkt')
