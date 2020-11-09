@@ -24,7 +24,7 @@ from nltk.corpus import stopwords
 from spacy.displacy.render import EntityRenderer
 from IPython.core.display import display, HTML,Markdown
 from spacy import displacy
-import spacy_streamlit
+# import spacy_streamlit
 from streamlit import components
 import re
 import en_core_web_sm
