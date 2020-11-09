@@ -57,7 +57,7 @@ def get_authenticated_service():
         with open('token.pickle', 'wb') as token:
             pickle.dump(credentials, token)
 
-    return build(API_SERVICE_NAME, API_VERSION, credentials = credentials)
+    return build(API_SERVICE_NAME, API_VERSION, credentials = credentials,cache_discovery=False)
 
 def read_required_no_of_comments(url,requiredNoOfComments):
         """
@@ -84,6 +84,7 @@ def read_required_no_of_comments(url,requiredNoOfComments):
         author=[]
         reply_count = []
         like_count = []
+        comment_date=[]
 
         if int(totalComments)>=1: 
 
@@ -100,6 +101,7 @@ def read_required_no_of_comments(url,requiredNoOfComments):
                         author.append(item['snippet']['topLevelComment']['snippet']['authorDisplayName'])
                         reply_count.append(item['snippet']['totalReplyCount'])
                         like_count.append(item['snippet']['topLevelComment']['snippet']['likeCount'])
+                        comment_date.append(item['snippet']['topLevelComment']['snippet']['publishedAt'])
 
     # Check if another page exists. If yes, then read comments till there is no next page       
             while 'nextPageToken' in responseComment and len(comment_id)<int(requiredNoOfComments):
@@ -116,6 +118,7 @@ def read_required_no_of_comments(url,requiredNoOfComments):
                                 author.append(item['snippet']['topLevelComment']['snippet']['authorDisplayName'])
                                 reply_count.append(item['snippet']['totalReplyCount'])
                                 like_count.append(item['snippet']['topLevelComment']['snippet']['likeCount'])
+                                comment_date.append(item['snippet']['topLevelComment']['snippet']['publishedAt'])
 
     # Add all the values to a dataframe to return  
             doc=pd.DataFrame({ 
@@ -124,7 +127,14 @@ def read_required_no_of_comments(url,requiredNoOfComments):
                           'CommentID': comment_id,
                           'Author':author,
                           'Replies': reply_count,
-                          'Likes': like_count})
+                          'Likes': like_count,
+                          'CommentDate':comment_date})
+    # Convert Datetime to Date
+        doc['CommentDate']=pd.to_datetime(doc['CommentDate'])
+        doc['CommentDate']=doc['CommentDate'].apply(lambda x: x.date())
+
+        doc.drop_duplicates(subset=['Comment'],inplace=True)
+        doc.reset_index(drop=True,inplace=True)
     # Save data 
         fileName="Comments_"+videoTitle
 #         doc.to_excel("Data/"+fileName+".xlsx",index_label='CommentID',index=False)
