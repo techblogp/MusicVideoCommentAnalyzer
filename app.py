@@ -24,13 +24,29 @@ from nltk.corpus import stopwords
 from spacy.displacy.render import EntityRenderer
 from IPython.core.display import display, HTML,Markdown
 from spacy import displacy
-# import spacy_streamlit
 from streamlit import components
 import re
-import en_core_web_sm
+# import en_core_web_sm
+
+
+@st.cache()
+def load_model(name):
+    return spacy.load(name)
+
+
+@st.cache()
+def process_text(nlp, text):
+    return nlp(text)
+
+
+nlp = spacy.load("en_core_web_sm")
+# doc = process_text(nlp, "Hello world")
+
+
+
 
 st.beta_set_page_config(layout="wide")
-nlp=en_core_web_sm.load()
+# nlp=en_core_web_sm.load()
 
 # Title
 st.markdown("<h1 style='text-align:center; position: relative; top: -30px; margin:0; padding: 0;'>YouTube Comment Analyzer</h1>", unsafe_allow_html=True)
