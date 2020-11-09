@@ -54,7 +54,7 @@ def get_authenticated_service():
             credentials = flow.run_console()
 
         # Save the credentials for the next run
-        with open('token.pickle', 'wb') as token:
+        with open('yumm.pickle', 'wb') as token:
             pickle.dump(credentials, token)
 
     return build(API_SERVICE_NAME, API_VERSION, credentials = credentials,cache_discovery=False)
