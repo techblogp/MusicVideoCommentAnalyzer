@@ -28,13 +28,15 @@ from matplotlib import pyplot as plt
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 from nltk.corpus import stopwords
-from spacy.displacy.render import EntityRenderer
-from IPython.core.display import display, HTML,Markdown
 import spacy
 from spacy import displacy
+from spacy.displacy.render import EntityRenderer
+from IPython.core.display import display, HTML,Markdown
+
+
 import streamlit as st
 from streamlit import components
-import spacy_streamlit
+# import spacy_streamlit
 
 models = ["en_core_web_sm", "en_core_web_md"]
 
