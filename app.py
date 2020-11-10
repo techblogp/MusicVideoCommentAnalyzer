@@ -51,8 +51,8 @@ with st.beta_container():
     noOfComments=inputNumber.number_input(label='Enter no. of comments to read or use default',value=500)
 
 #Expandable sidebar
-exp=st.sidebar.beta_expander("About the project")
-exp.write('Enter URL of a YouTube music video and no. of comments you want to analyze and hit Submit. The top level comments get scrapped from YouTube and the  classified into Spam and non-Spam (Ham) categories. ')
+exp=st.sidebar.beta_expander("About the App")
+exp.write('This app provides text analytics on YouTube video comments for the given video URL. The top level comments get scrapped from YouTube and then classified by their sentiments and then into Spam and non-Spam (Ham) categories. \n\n This app also provides a list of top key phrases/topics in each of the Positive and Negative comments along with sample comments with those phrases. These phrase act as a good representation of comments\' content without having to read them one by one. ')
 
 st.sidebar.markdown('[Github Repository](https://github.com/Preeti24/Youtube-comments)')
 
@@ -259,7 +259,7 @@ submitButton.write("")
 submitButton.write("")   
 if submitButton.button(label='Submit'):
     try:
-        with st.spinner('Running machine learning model...'):
+        with st.spinner('Hold on!!!  Magic is hapenning...'):
            
             data=readReviews(youTubeURL,noOfComments);
             data['Comment']=data['Comment'].apply(lambda x: cleanhtml(x))
