@@ -9,10 +9,12 @@ import string as str
 
 import Helper
 import YoutubeCommentExtractor
+import nltkModules
 import dill 
 import importlib
 importlib.reload(YoutubeCommentExtractor)
 importlib.reload(Helper)
+importlib.reload(nltkModules)
 
 
 
@@ -34,8 +36,9 @@ import streamlit as st
 from streamlit import components
 
 
-import en_core_web_sm
-nlp=en_core_web_sm.load()
+# import en_core_web_sm
+# nlp=en_core_web_sm.load()
+nlp=nltkModules.nlp
 
 st.beta_set_page_config(layout="wide")
 
