@@ -36,9 +36,8 @@ import streamlit as st
 from streamlit import components
 
 
-# import en_core_web_sm
-# nlp=en_core_web_sm.load()
-nlp=nltkModules.nlp
+import en_core_web_sm
+nlp=en_core_web_sm.load()
 
 st.beta_set_page_config(layout="wide")
 
