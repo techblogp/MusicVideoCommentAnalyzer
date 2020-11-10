@@ -36,9 +36,9 @@ import streamlit as st
 from streamlit import components
 
 
-import en_core_web_sm
-nlp=en_core_web_sm.load()
-# nlp = spacy.load('en_core_web_sm')
+# import en_core_web_sm
+# nlp=en_core_web_sm.load()
+nlp = spacy.load('en_core_web_sm')
 
 st.beta_set_page_config(layout="wide")
 
