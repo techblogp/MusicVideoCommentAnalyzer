@@ -3,34 +3,42 @@ warnings.filterwarnings("ignore")
                         
 import pandas as pd
 import numpy as np
-import streamlit as st
-import dill 
+import re
+import time
+import string as str
+
 import Helper
 import YoutubeCommentExtractor
+import dill 
 import importlib
 importlib.reload(YoutubeCommentExtractor)
 importlib.reload(Helper)
-import time
+
+
+
 pd.set_option('display.max_columns', 100)
 pd.set_option('display.max_colwidth', -1)
 import seaborn as sns
 import matplotlib
 from matplotlib import pyplot as plt
-import string as str
-import nltkModules
+
+
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-import spacy
+
 from nltk.corpus import stopwords
 from spacy.displacy.render import EntityRenderer
 from IPython.core.display import display, HTML,Markdown
+import spacy
 from spacy import displacy
+import streamlit as st
 from streamlit import components
-import re
-import en_core_web_sm
 
+
+import en_core_web_sm
+nlp=en_core_web_sm.load()
 
 st.beta_set_page_config(layout="wide")
-nlp=en_core_web_sm.load()
+
 
 # Title
 st.markdown("<h1 style='text-align:center; position: relative; top: -30px; margin:0; padding: 0;'>YouTube Comment Analyzer</h1>", unsafe_allow_html=True)
@@ -250,22 +258,22 @@ def sampleComments(data):
 submitButton.write("")                                            
 submitButton.write("")   
 if submitButton.button(label='Submit'):
-#     try:
+    try:
         with st.spinner('Running machine learning model...'):
            
             data=readReviews(youTubeURL,noOfComments);
             data['Comment']=data['Comment'].apply(lambda x: cleanhtml(x))
 
-             #Spam and ham classification
-#             data=pd.DataFrame(data={'Comment':data['Comment'],
-                    # 'CommentDate':data['CommentDate'],
-#                    'Classification':model.predict(data['Comment']),
-#                    'Prediction probability':model.predict_proba(data['Comment'])[:,1].round(3)})
-            
+            #Spam and ham classification
             data=pd.DataFrame(data={'Comment':data['Comment'],
-                                    'CommentDate':data['CommentDate'],
-                   'Classification':0,
-                   'Prediction probability':0})
+                    'CommentDate':data['CommentDate'],
+                   'Classification':model.predict(data['Comment']),
+                   'Prediction probability':model.predict_proba(data['Comment'])[:,1].round(3)})
+            
+#             data=pd.DataFrame(data={'Comment':data['Comment'],
+#                                     'CommentDate':data['CommentDate'],
+#                    'Classification':0,
+#                    'Prediction probability':0})
             
             data['Classification']=data['Classification'].astype(int)
             
@@ -284,14 +292,15 @@ if submitButton.button(label='Submit'):
             fig, (ax1, ax2) = plt.subplots(1, 2)
             df.plot(kind='bar', stacked=True,colormap=cmap,ax=ax1)
             plt.ylabel("No. of comments")
-            plt.title("No. of Spam and Ham comments",fontdict={'fontsize':20})
             plt.xticks([0,1],labels=['Ham','Spam'],rotation='horizontal');
             
-           #Display comments over time
-            df_overtime=data.groupby(['CommentDate','Sentiment']).size().reset_index()
-            df_overtime.rename(columns={0:'Total'},inplace=True)
-            sns.lineplot(x='CommentDate',y='Total',data=df_overtime,hue='Sentiment',palette=['green','red','yellow'],ax=ax2)
+            #Display comments over time
+            df_overtime=data.groupby(['CommentDate','Sentiment']).size().reset_index().\
+            pivot(columns='Sentiment',index='CommentDate',values=0)
             
+            df_overtime.fillna(0,inplace=True)
+            df_overtime.plot(kind='bar',stacked='True',colormap=cmap,ax=ax2);
+
             col5.pyplot(fig)
 
             #Display video thumbnail
@@ -310,10 +319,15 @@ if submitButton.button(label='Submit'):
                 st.markdown("<h3 style='text-align:left; position: relative; top: 0px; margin:0; padding: 0;'>Sample Comment</h2>", unsafe_allow_html=True)
                 displayTopNComments(samplePosComments,topPosNPList)
             with col2:
+                
                 st.markdown("<h2 style='text-align:left; position: relative; top: 0px; margin:0; padding: 0;'>Top NEGATIVE things people are talking about</h2>", unsafe_allow_html=True)
-                st.write(topNegNPList)
-                st.markdown("<h3 style='text-align:left; position: relative; top: 0px; margin:0; padding: 0;'>Sample Comments</h2>", unsafe_allow_html=True)
+                if len(topNegNPList)>0:
+                    st.write(topNegNPList)
+                    st.markdown("<h3 style='text-align:left; position: relative; top: 0px; margin:0; padding: 0;'>Sample Comments</h2>", unsafe_allow_html=True)
+                else:
+                    
+                    st.markdown("<h3 style='text-align:center; position: relative; top: 0px; margin:0; padding: 0;'><br><br>People are very nice!<br> nobody has anything negative to say!!!</h3>", unsafe_allow_html=True)
                 displayTopNComments(sampleNegComments,topNegNPList)
-#     except:
-#         st.error("An error has occured")
+    except:
+        st.error("An error has occured")
 
