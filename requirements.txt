@@ -5,6 +5,7 @@ xgboost==0.90
 seaborn==0.11.0
 spacy==2.2.1
 en_core_web_sm==2.2.0
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.2.0/en_core_web_sm-2.2.0.tar.gz
 wordcloud==1.6.0
 dill==0.3.2
 scipy==1.5.2
