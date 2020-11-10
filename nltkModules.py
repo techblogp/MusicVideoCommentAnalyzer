@@ -15,5 +15,5 @@ import spacy
 # spacy.load('en_core_web_sm')
 
 import pip
-failed = pip.main(["install", en_core_web_sm])
+failed = pip.main(["install","en_core_web_sm"])
 
