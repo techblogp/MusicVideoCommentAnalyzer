@@ -34,11 +34,13 @@ import spacy
 from spacy import displacy
 import streamlit as st
 from streamlit import components
+import spacy_streamlit
 
+models = ["en_core_web_sm", "en_core_web_md"]
 
 # import en_core_web_sm
 # nlp=en_core_web_sm.load()
-nlp = spacy.load('en_core_web_sm')
+nlp = spacy.load(models[0])
 
 st.beta_set_page_config(layout="wide")
 
