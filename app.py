@@ -33,6 +33,7 @@ nltk.download('wordnet')
 nltk.download('punkt')
 
 
+from nltk.corpus import stopwords
 import spacy
 from spacy import displacy
 from spacy.displacy.render import EntityRenderer
