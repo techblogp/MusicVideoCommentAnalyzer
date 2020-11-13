@@ -265,7 +265,7 @@ def sampleComments(data):
 submitButton.write("")                                            
 submitButton.write("")   
 if submitButton.button(label='Submit'):
-    try:
+#     try:
         with st.spinner('Hold on!!!  Magic is hapenning...'):
            
             data=readReviews(youTubeURL,noOfComments);
@@ -335,6 +335,6 @@ if submitButton.button(label='Submit'):
                     
                     st.markdown("<h3 style='text-align:center; position: relative; top: 0px; margin:0; padding: 0;'><br><br>People are very nice!<br> nobody has anything negative to say!!!</h3>", unsafe_allow_html=True)
                 displayTopNComments(sampleNegComments,topNegNPList)
-    except:
-        st.error("An error has occured")
+#     except:
+#         st.error("An error has occured")
 
