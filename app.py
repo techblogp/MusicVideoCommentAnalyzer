@@ -9,12 +9,12 @@ import string as str
 
 import Helper
 import YoutubeCommentExtractor
-import nltkModules
+# import nltkModules
 import dill 
 import importlib
 importlib.reload(YoutubeCommentExtractor)
 importlib.reload(Helper)
-importlib.reload(nltkModules)
+# importlib.reload(nltkModules)
 
 
 
@@ -27,7 +27,8 @@ from matplotlib import pyplot as plt
 
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
-from nltk.corpus import stopwords
+import stopwords
+import punkt
 import spacy
 from spacy import displacy
 from spacy.displacy.render import EntityRenderer
