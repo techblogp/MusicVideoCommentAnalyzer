@@ -40,8 +40,8 @@ API_VERSION = 'v3'
 
 def get_authenticated_service():
     credentials = None
-    if os.path.exists('token.pickle'):
-        with open('token.pickle', 'rb') as token:
+    if os.path.exists('yumm.pickle'):
+        with open('yumm.pickle', 'rb') as token:
             credentials = pickle.load(token)
     #  Check if the credentials are invalid or do not exist
     if not credentials or not credentials.valid:
