@@ -8,9 +8,7 @@ streamlit==0.69.2
 wordcloud==1.6.0
 google_auth_oauthlib==0.4.1
 nltk==3.5
-scipy==1.5.2
 xgboost==0.90
-spacy==2.2.1
 spacy_streamlit==0.1.0
 google_api_python_client==1.12.5
 ipython==7.19.0
