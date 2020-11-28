@@ -1,1 +1,1 @@
-# MusicVideoCommentAnalyzer
+# MusicVideoCommentAnalyzer [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/techblogp/musicvideocommentanalyzer/main/app.py)
