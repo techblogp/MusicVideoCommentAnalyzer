@@ -66,7 +66,7 @@ with st.beta_container():
 
 #Expandable sidebar
 exp=st.sidebar.beta_expander("About the App")
-exp.write('This app provides text analytics on YouTube video comments for the given video URL. The top level comments get scrapped from YouTube and then classified by their sentiments and then into Spam and non-Spam (Ham) categories. \n\n This app also provides a list of top key phrases/topics in each of the Positive and Negative comments along with sample comments with those phrases. These phrase act as a good representation of comments\' content without having to read them one by one. ')
+exp.write('This app provides text analytics on YouTube video comments for the given video URL. The top level comments get scraped from YouTube and then classified by their sentiments and then into Spam and non-Spam (Ham) categories. \n\n This app also provides a list of top key phrases/topics in each of the Positive and Negative comments along with sample comments with those phrases. These phrase act as a good representation of comments\' content without having to read them one by one. ')
 
 st.sidebar.markdown('[Github Repository](https://github.com/Preeti24/Youtube-comments)')
 
